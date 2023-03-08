@@ -28,15 +28,39 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.5.2</version>
+            <version>3.5.6</version>
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>3.8.1</version>
-            <scope>test</scope>
         </dependency>
 
     </dependencies>
+
+    <!--在 build 中配置 resources，解决资源导出失败问题-->
+    <!--include 标签指定哪些文件将被匹配，以*作为通配符-->
+    <!--exclude 标签指定哪些文件将被忽略，以*作为通配符-->
+    <!--filtering 构建过程中是否对资源进行过滤，默认false-->
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
 </project>
